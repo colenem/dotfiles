@@ -1,0 +1,55 @@
+#  [ Colorized man pages ]
+# =========================
+export LESS_TERMCAP_mb=$'\e[01;31m'
+export LESS_TERMCAP_md=$'\e[01;31m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;44;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[01;32m'
+
+#  [regular aliases]
+# ===================
+alias aliasrc='vim ~/.bash_aliases'
+alias bashrc='vim ~/.bashrc'
+alias bource='source ~/.bash_aliases'
+alias colorize='pygmentize -g'
+alias elasticsearch='sd service elasticsearch $1'
+alias empty="echo '' > $1"
+alias install='sudo apt install -y $argv'
+alias lh='ls -a --group-directories-first'
+alias ll='ls -alh --group-directories-first'
+alias sql='sd service mysql $1'
+alias nx='sd service nginx $1'
+alias sd='sudo '
+alias trc='vim ~/.tmux.conf'
+alias update='sudo apt update'
+alias vim='/usr/bin/nvim'
+alias svim='sudo vim'
+
+
+#  [variables]
+# =============
+html=/var/www/html
+archive=$html/archive/wp-content
+archive_2=$html/archive_2/wp-content
+
+#  [functions]
+# ==============
+function html {
+    cd $html/$1
+}
+
+function enav {
+    empty $1
+    lnav $1
+}
+
+function hgrep {
+    history 1 | grep $1
+}
+
+function rless { 
+    sed '1!G;h;$!d' $1 | less
+}
+

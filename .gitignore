@@ -1,0 +1,85 @@
+#  specific filetype endings/containing
+# ======================================
+*.orig*
+*.bak*
+*.old*
+*.new*
+*.scme*
+*.swp
+*orig*
+debug.log
+composer.*
+ignore
+*[0-9]*
+
+#  exact(ish) file name
+# ======================
+composer.json
+composer.lock
+.php_cs.cache
+.projectile
+*.tern-*
+special.php
+debug.php
+.ac-php-conf.json
+.ctagsignore
+.eslintrc.json
+tags
+etags
+*tags*
+*etags*
+*eslint*
+db.php
+indexFiles
+*watch.js
+*stalk.js
+*.DS_Store
+user_pass.txt
+php_errors.log
+.prettierrc
+*package-lock.json
+themes/storycorps-twentysixteen/package-lock.json
+*page-display-question-lists.php*
+*page-mark-empty-question-lists-as-draft.php*
+themes/storycorps-twentysixteen/instructions.md
+humans.txt
+*test*
+php.ini
+my.cnf
+
+#  directories
+# =============
+*modified*
+logs
+vendor
+*themes/twentyfifteen*
+*themes/twentysixteen*
+*themes/twentyfourteen*
+*themes/twentyseventeen/*
+*plugins/cms-tree-page-view*
+*plugins/query-monitor*
+*plugins/wp-nested-pages/*
+*plugins/wp-php-console/*
+*plugins/ajax-thumbnail-rebuild/*
+*plugins/menu-exporter
+*plugins/wpmandrill*
+*plugins/jetpack-widget-visibility*
+*current*
+*plugins/widget-importer-exporter*
+*plugins/ajax-thumbnail-rebuild*
+*plugins/elasticpress*
+*plugins/json-rest-api*
+*plugins/multiple-post-thumbnails*
+*plugins/query-monitor*
+*plugins/regenerate-thumbnails*
+plugins/sc-reservations/*
+*plugins/widget-logic*
+*upgrade*
+themes/storycorps-twentysixteen/assets/lib
+themes/storycorps-twentysixteen/includes/salesforce
+*es_config*
+*elasticsearch*
+
+#  no! don't ignore me!
+# ======================
+!themes/storycorps-twentysixteen/vendor

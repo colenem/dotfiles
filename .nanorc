@@ -1,0 +1,11 @@
+include "~/.nano/conf.nanorc"
+include "~/.nano/nanorc.nanorc"
+include "~/.nano/php.nanorc"
+include "~/.nano/vi.nanorc"
+include "~/.nano/zsh.nanorc"
+include "~/.nano/zshrc.nanorc"
+include "~/.nano/nginx.nanorc"
+include "~/.nano/xml.nanorc"
+#include "~/.nano/*.nanorc"
+
+set linenumbers
