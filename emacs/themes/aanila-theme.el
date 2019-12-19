@@ -21,10 +21,19 @@
 
 ;;; Commentary:
 
+;; The aanila theme.
+
+;; How to use:
+;; First, add a local directory to custome-theme-load-path,
+;; (add-to-list 'custom-theme-load-path "~/home/$USER/drop/the/theme/to")
+;; Then drop this theme into it,
+;; M-x load-theme, then choose blackboard, it should work
+;; Or, simple use (load-theme 'blackboard t) to enable the theme from start.
+
 ;;; Code:
 
 (deftheme aanila
-  "aanila theme")
+  "aanila theme goodness")
 
 (custom-theme-set-faces
  `aanila
@@ -49,6 +58,7 @@
  `(highlight-changes-delete ((t (:foreground nil :background "chocolate4" :underline nil))))
  `(hl-line ((t (:background "gray25"))))
  `(secondary-selection ((t (:foreground "black" :background "white smoke"))))
+
  ;; All font locks
  `(font-lock-builtin-face ((t (:foreground "LightSteelBlue"))))
  `(font-lock-comment-face ((t (:foreground "peachpuff3" :italic t :background "gray9"))))
