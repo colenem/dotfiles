@@ -33,7 +33,7 @@
   '(
     (aanila-theme       :location "/home/colene/Develop/dotfiles/emacs/themes")
     (Amelie-theme       :location "/home/colene/Develop/dotfiles/emacs/themes")
-    (blackboard-theme   :location "/home/colene/Develop/dotfiles/emacs/themes")
+;;;    (blackboard-theme   :location "/home/colene/Develop/dotfiles/emacs/themes")
     atom-one-dark-theme
     distinguished-theme
     seoul256-theme
@@ -73,10 +73,10 @@ Each entry is either:
   (use-package Amelie-theme
     :ensure nil))
 
-(defun user-themes/init-blackboard-theme()
-  (use-package blackboard-theme
-    :ensure nil
-    :defer t))
+;;;(defun user-themes/init-blackboard-theme()
+;;;  (use-package blackboard-theme
+;;;    :ensure nil
+;;;    :defer t))
 
 (defun user-themes/init-atom-one-dark-theme()
   (use-package atom-one-dark-theme
@@ -92,8 +92,6 @@ Each entry is either:
   (use-package seoul256-theme
     :demand
     :init
-    (setq seoul256-background 233)
-    :config
-    (load-theme 'seoul256)))
+    (setq seoul256-background 233)))
 
 ;;; packages.el ends here

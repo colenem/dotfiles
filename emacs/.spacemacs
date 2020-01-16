@@ -192,7 +192,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(seoul256
+   dotspacemacs-themes '(blackboard
+                         seoul256
                          aanila
                          Amelie
                          distingusihed
@@ -315,7 +316,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
 
    ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
    ;; variable with `dotspacemacs-maximized-at-startup' in OSX to obtain
@@ -366,7 +367,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers '(:enabled-for-modes 'all)
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -459,8 +460,15 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  (setq ispell-program-name "aspell")
-  )
+  (setq ispell-program-name "aspell")           ;; use aspell as default dictionary
+  (setq vc-follow-symlinks t)                   ;; always follow symlinks, hide prompt
+  (setq seoul256-background 233)                ;; use dark background
+  (setq-default indent-tabs-mode nil)           ;; always use spaces instead of tabs
+  (setq-default tab-width 4)                    ;; tab width of 4 (spaces)
+  (setq-default split-height-threshold nil)
+  (setq-default split-width-threshold 0)        ;; open in vertical split with C-c o
+  (setq even-window-sizes 1)
+ )
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
@@ -475,7 +483,15 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  )
+  (load-theme 'seoul256 t)
+  (global-whitespace-mode t)
+  (set-face-background 'whitespace-line  'unspecified) ;; change background for whitespace
+  (set-face-background 'whitespace-space 'unspecified) ;; change background for whitespace
+  (set-face-background 'whitespace-tab   'unspecified) ;; change background for whitespace
+  (set-face-foreground 'whitespace-line  'unspecified) ;; change background for whitespace
+  (set-face-foreground 'whitespace-space "#5C6370")    ;; change background for whitespace
+  (set-face-foreground 'whitespace-tab   "#5C6370")    ;; change background for whitespace
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -505,7 +521,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#0C1021" :foreground "#F8F8F8")))))
+ '(default ((t (:family "Source Code Pro" :foundry "ADBO" :slant normal :weight normal :height 143 :width normal))))
+ '(font-lock-comment-face ((t (:foreground "#719872" :slant italic)))))
 )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
