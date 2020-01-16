@@ -233,7 +233,7 @@ function printTerminalColors
             # Display the color
             printf "\e[$fgbg;5;%sm  %3s  \e[0m" $color $color
             # Display 6 colors per lines
-	    if test (math "( ( $color + 1 ) %6 )" ) -eq 4
+	    if test ( math "( ( $color + 1 ) %6 )" ) -eq 4
                 echo # New line
             end
         end
