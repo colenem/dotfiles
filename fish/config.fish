@@ -227,6 +227,20 @@ end
 
 #  [functions]
 # =============
+function printTerminalColors
+    for fgbg in 38 48               # Foreground / Background
+        for color in (seq 255)      # Colors
+            # Display the color
+            printf "\e[$fgbg;5;%sm  %3s  \e[0m" $color $color
+            # Display 6 colors per lines
+	    if test (math "( ( $color + 1 ) %6 )" ) -eq 4
+                echo # New line
+            end
+        end
+        echo # New line
+    end
+end
+
 function colorizen
     colorize $argv | perl -e 'print ++$i." $_" for -1<>'
 end
