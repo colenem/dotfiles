@@ -1,10 +1,10 @@
 ### **Useful terminal commands:**
 * Show connected drives:  
-    `$ lsblk -o name,label,size,fstype,state,mountpoint`  
+    ```$ lsblk -o name,label,size,fstype,state,mountpoint```  
     **OR**  
-    `$ sudo fdisk -l`  
+    ```$ sudo fdisk -l```  
     **OR**  
-    `$ sudo parted -l`
+    ```$ sudo parted -l```
 * Get size info on mounted drives:  
     ```$ df -H```
 * Get size info of a directory:  
