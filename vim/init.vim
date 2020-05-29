@@ -5,19 +5,18 @@ set t_Co=256
 " use bash as default shell when executing commands in vim
 set shell=bash
 
-so ~/.vim_plug.vim
-so ~/.vim_plugin_settings.vim
+so $HOME/.vim_plug.vim
+so $HOME/.vim_plugin_settings.vim
 
-set rtp+=$HOME/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim,/usr/local/bin/fzf
-
-let g:python3_host_prog='/usr/local/bin/python3'
-let g:python_host_prog='/usr/local/bin/python'
+"let g:python3_host_prog='/usr/local/bin/python3'
+"let g:python_host_prog='/usr/local/bin/python'
 
 " ********************************
 " **   Default Custom Settings  **
 " ********************************
 
-" Basic settings
+"    Basic settings
+" ====================
 syntax on "turn on syntax highlighting
 set listchars+=eol:¬,tab:\|·,trail:·,precedes:·,extends:·,space:·
 set list
@@ -28,6 +27,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent smartindent "setup
 set smarttab
 au FileType * set fo-=c fo-=r fo-=o fo+=2n fo-=t "stop inserting comment chars automatically (when going to a newline)
 set backspace=indent,eol,start "make backspace work like in other programs
+set clipboard+=unnamed,unnamedplus "share buffers between all vim instances -- this allows to copy and paste between different instances
 "set digraph
 set listchars+=eol:¬,tab:\|·,trail:·,precedes:·,extends:·,space:·
 
@@ -41,26 +41,15 @@ let g:enable_bold_font = 1
 
 "    Keymappings
 " =================
-so ~/.keymappings.vim
+so $HOME/.keymappings.vim
 
-"    Colorscheme setup
-" =======================
-if has("gui_vimr")
-    set background=dark
-    colo antares | hi Normal guibg=black | hi Delimiter guifg=#ffaf87
-    hi Whitespace guifg=#767676
-else
-    "colo antares
-    "colo default
-    "hi Normal ctermbg=16
-    "colo onedark
-    colo delek
-    hi Normal ctermbg=16
-endif
-
-
-"    Syntax highlighting preferences with a dark bg
-" ====================================================
+"    Colorscheme setup / Syntax highlighting preferences with a dark bg
+" ========================================================================
+set bg=dark
+colo one
+hi Normal ctermbg=NONE
+hi Pmenu ctermfg=0 ctermbg=176 
+hi PmenuSel ctermfg=0 ctermbg=165
 hi clear         CursorColumn
 hi Comment       ctermbg=none guifg=#929393
 hi NonText       ctermbg=none
@@ -71,7 +60,7 @@ hi SpecialKey    ctermfg=123
 hi CursorColumn  ctermbg=236 guibg=#4e4e4e
 hi clear cursorline
 set cursorline
-hi CursorLine cterm=underline ctermbg=236 guibg=#4e4e4e
+hi CursorLine cterm=underline ctermbg=234
 hi Whitespace guifg=#767676
 hi Matchparen ctermbg=171 ctermfg=white guibg=#10d0ff guifg=black
 hi DiffAdd    ctermfg=83
@@ -102,17 +91,13 @@ let g:netrw_winsize = 14      " use 25% of the page width to show the file tree
 
 "    GUI Specific Settings
 " ===========================
-" dont set the clipboard if using oni gui
-if !exists("g:gui_oni")
-    set clipboard=unnamed "share buffers between all vim instances -- this allows to copy and paste between different instances
-    "echo 'ONI is not active'
-    "hi Normal guibg=#000
-elseif exists("g:gui_oni")
+if exists("g:gui_oni")
     " Taken from oni's init config found here: ~/oni/vim/default/bundle/oni-vim-defaults/plugin/init.vim
-    colo Tomorrow-Night-Bright
+    "colo Tomorrow-Night-Bright
     set noswapfile smartcase splitright splitbelow
     set noruler noshowcmd
     set laststatus=0
+    "set clipboard-=unnamedplus " dont set the clipboard if using oni gui
 
     augroup vimrc
         autocmd!
@@ -131,6 +116,20 @@ elseif exists("g:gui_oni")
     inoremap <expr> <C-l> pumvisible() ? "<Esc>la" : "<C-o>a"
 
     tnoremap <Esc> <C-\><C-n>
+
+    hi Normal guibg=black
+elseif has("gui_vimr")
+    set background=dark
+    colo antares | hi Normal guibg=black | hi Delimiter guifg=#ffaf87
+    hi Whitespace guifg=#767676
+elseif exists('g:nyaovim_version')
+    "set clipboard+=unnamedplus
+    set background=dark
+    colo one
+    hi Normal guibg=black
+    hi Whitespace guifg=#767676
+    hi CursorColumn guibg=#303030
+    hi CursorLine gui=underline guibg=#0c0c0c
 endif
 
 " ************************************
