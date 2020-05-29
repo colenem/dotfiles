@@ -39,7 +39,19 @@
 
 "    lightline setup
 " =====================
-so ~/.vim/after/settings/lightline.vim
+"let g:lightline = {
+"    \ 'colorscheme': 'one',
+"    \ }
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }"so ~/.vim/after/settings/lightline.vim
 
 "    Match html tags
 " =====================
@@ -167,14 +179,13 @@ let g:tern_show_argument_hints='on_hold'
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1 "enable deopletion
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-            \ 'tern#Complete',
-            \ 'jspc#omni'
-            \]
+call deoplete#custom#var( 'omni', 'functions', {
+            \ 'javascript': [ 'tern#Complete', 'jspc#omni' ]
+            \ })
 set completeopt=longest,menuone,preview
-let g:deoplete#sources = {}
-let g:deoplete#sources.js = ['file', 'ultisnips', 'ternjs']
+call deoplete#custom#option( 'sources', {
+            \ 'js': ['file', 'ultisnips', 'ternjs'],
+            \})
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
 
@@ -186,16 +197,16 @@ set nofoldenable
 "setlocal foldmethod=manual
 
 " Vdebug
-let g:vdebug_options = {}
-let g:vdebug_options["server"]             = '192.168.1.34'
-let g:vdebug_options["break_on_open"]      = 1
-let g:vdebug_options["path_maps"]          = { '/Users/colenemcfarlane/Develop/archive/www': '/Users/colenemcfarlane/Develop/archive/www' }
-let g:vdebug_options["debug_file"]         = '/Users/colenemcfarlane/Develop/vdebug.log'
-let g:vdebug_options["watch_window_style"] = 'compact'
+"let g:vdebug_options = {}
+"let g:vdebug_options["server"]             = '192.168.1.34'
+"let g:vdebug_options["break_on_open"]      = 1
+"let g:vdebug_options["path_maps"]          = { '/Users/colenemcfarlane/Develop/archive/www': '/Users/colenemcfarlane/Develop/archive/www' }
+"let g:vdebug_options["debug_file"]         = '/Users/colenemcfarlane/Develop/vdebug.log'
+"let g:vdebug_options["watch_window_style"] = 'compact'
 
 "    NERDCommenter
 " ===================
-source ~/.nerdcommenter.vim
+"source ~/.nerdcommenter.vim
 
 " ++++++++++++++++++++++++++++++++++++++++
 " ++     End Custom Plugin Settings     ++

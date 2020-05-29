@@ -2,7 +2,7 @@ set ft=vim
 colo peachpuff
 
 " Plugin Directory
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('/home/colene/.config/nvim/plugged')
 
 " use bash as default shell when executing commands in vim
 set shell=bash
@@ -91,6 +91,10 @@ Plug 'pangloss/vim-javascript', { 'as': 'vim-syntax-javascript-extras' }
 
 "jQuery extras
 Plug 'othree/javascript-libraries-syntax.vim', { 'as': 'vim-syntax-jQuery' }
+
+" Typescript
+Plug 'leafgarland/typescript-vim', { 'as': 'vim-typescript' }
+Plug 'peitalin/vim-jsx-typescript'
 
 " Preview CSS Colors
 "Plug 'chrisbra/Colorizer', { 'as': 'vim-colorizer' }
