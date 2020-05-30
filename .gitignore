@@ -83,3 +83,4 @@ themes/storycorps-twentysixteen/includes/salesforce
 #  no! don't ignore me!
 # ======================
 !themes/storycorps-twentysixteen/vendor
+!zsh/v2
