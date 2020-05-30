@@ -23,4 +23,13 @@
     ```$ qemu-system-x86_64 -boot d -cdrom '<ISO_LOCATION>.iso' -m 2048```
 * Download and save file using wget:  
     ```$ wget -O <DWNLD_LOC>/fileName <FILE_URL>```
-
+* Just in case you break your internet (again) *
+    ```$ sudo systemctl status systemd-networkd
+       $ sudo systemctl start systemd-networkd
+       $ sudo systemctl enable systemd-networkd
+       S journalctl -b | grep networkd (check for issues)
+       $ networkctl (choose between status || start || list)
+       $ sudo lshw -C network
+       $ sudo ifconfig <network-device> up
+       $ sudo dhclient -v <network-device>
+    ```
