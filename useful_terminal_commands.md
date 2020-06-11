@@ -43,17 +43,31 @@
     ```
     $ qemu-system-x86_64 -boot d -cdrom '<ISO_LOCATION>.iso' -m 2048
     ```
+* Boot qemu with samba share enabled and mount specified host usb on windows guest
+    ```
+    $ xdg-su -c "qemu-system-x86_64 \
+    -net nic \
+    -net user,smb=<samba_share_dir> \
+    -smp cpus=2 \
+    -cpu host \
+    -enable-kvm \
+    -m 4096 \
+    -drive format=qcow2,file=<vm_path>.qcow2 \
+    -device qemu-xhci,id=xhci \
+    -device usb-host,hostbus=6,hostaddr=4"
+    ```
 * Download and save file using wget:  
     ```
     $ wget -O <DWNLD_LOC>/fileName <FILE_URL>
     ```
 * Just in case you break your internet (again):
-    ```$ sudo systemctl status systemd-networkd
-       $ sudo systemctl start systemd-networkd
-       $ sudo systemctl enable systemd-networkd
-       S journalctl -b | grep networkd (check for issues)
-       $ networkctl (choose between status || start || list)
-       $ sudo lshw -C network
-       $ sudo ifconfig <network-device> up
-       $ sudo dhclient -v <network-device>
+    ```
+    $ sudo systemctl status systemd-networkd
+    $ sudo systemctl start systemd-networkd
+    $ sudo systemctl enable systemd-networkd
+    $ journalctl -b | grep networkd (check for issues)
+    $ networkctl (choose between status || start || list)
+    $ sudo lshw -C network
+    $ sudo ifconfig <network-device> up
+    $ sudo dhclient -v <network-device>
     ```
