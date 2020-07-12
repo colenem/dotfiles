@@ -5,8 +5,8 @@ set t_Co=256
 " use bash as default shell when executing commands in vim
 set shell=bash
 
-so $HOME/.vim_plug.vim
-so $HOME/.vim_plugin_settings.vim
+so $HOME/.config/nvim/.vim_plug.vim
+so $HOME/.config/nvim/.vim_plugin_settings.vim
 
 "let g:python3_host_prog='/usr/local/bin/python3'
 "let g:python_host_prog='/usr/local/bin/python'
@@ -41,7 +41,7 @@ let g:enable_bold_font = 1
 
 "    Keymappings
 " =================
-so $HOME/.keymappings.vim
+so $HOME/.config/nvim/.keymappings.vim
 
 "    Colorscheme setup / Syntax highlighting preferences with a dark bg
 " ========================================================================

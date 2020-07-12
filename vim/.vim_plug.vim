@@ -2,7 +2,7 @@ set ft=vim
 colo peachpuff
 
 " Plugin Directory
-call plug#begin('/home/colene/.config/nvim/plugged')
+call plug#begin('/home/colene/.config/nvim/autoload/plugged')
 
 " use bash as default shell when executing commands in vim
 set shell=bash
