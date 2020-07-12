@@ -1,33 +1,5 @@
-# [variables]
-android_tools=$HOME/android/platform-tools
-develop=$HOME/Develop
-vagrant=$develop/Vagrant/www/html
-archive=$vagrant/archive/wp-content
-archive_child=$archive/themes/archive-child
-archive_plugin=$archive/plugins/storycorps/includes/StoryCorps
-brew=$(brew --prefix)
-config=$HOME/.config
-fish=$config/fish
-html='www/wp-content'
-logs='logs'
-mamp='/Applications/MAMP'
-mamp_bin=$mamp/bin
-mamp_lib_bin=$mamp/Library/bin
-php_version=7.0.22
-mamp_php=$mamp_bin/php/php{$php_version}/bin/php
-nvim=$config/nvim
-scme=$develop/sc.me/www/wp-content
-scorg=$develop/scorg/www/wp-content
-v_archive=$vagrant/archive/www/wp-content
-z=~/.zshrc
-pass=$(cat ~/pwd.txt)
-
-
 # [aliases]
-alias colorize='pygmentize -g'
-#alias ctags='$brew/bin/ctags'
-alias e.macs='$brew/bin/emacs'
-alias elasticsearch='eval $develop/Vagrant/www/html/elasticsearch-5.3.2/bin/elasticsearch'
+#alias colorize='pygmentize -g'
 alias g='git'
 alias gconfig='vim ~/.gitconfig'
 alias gignore='vim ~/.gitignore_global'
@@ -41,14 +13,12 @@ alias lsD='gls --group-directories-first --color=always -lah'
 alias nvrc='export nvim; nvim ~/.config/nvim/init.vim'
 alias vim='neo'
 alias omz='vim ~/custom.zsh'
-alias pgen='password-generator'
 alias spacemacs='emacs -mm --insecure &;'
 alias trc='vim ~/.tmux.conf'
 alias vimdiff='vim -d'
 alias vimrc='vim ~/.vimrc'
 alias zource='source ~/custom.zsh'
 alias zshrc='vim ~/.zshrc'
-#alias atom='/Applications/Atom.app/Contents/Resources/app/atom.sh'
 
 # [git aliases]
 source ~/abbreviations.zsh
@@ -99,23 +69,6 @@ function empty () {
     echo '' > $1
 }
 
-function emacs_special() {
-    local macs
-    if [ $1 =~ 'reg' ]; then
-        if [ -n '$2']; then
-            e.macs $2 &
-        else
-            e.macs &
-        fi
-    elif [ $1 =~ 'wide' ]; then
-        if [ -n '$2' ]; then
-            e.macs $2 -geometry 140x73 &
-        else
-            e.macs -geometry 140x73 &
-        fi
-    fi
-}
-
 function gdt() {
     g difftool --tool=$1
 }
@@ -164,8 +117,8 @@ function start() {
 
 
 # [wp-cli setup]
-WP_CLI_CONFIG_PATH=~/.wp-cli/config.yaml
-WP_CLI_PHP=(brew --prefix homebrew/php/php70)
+#WP_CLI_CONFIG_PATH=~/.wp-cli/config.yaml
+#WP_CLI_PHP=(brew --prefix homebrew/php/php70)
 
 
 # [autosuggestions: change color]
