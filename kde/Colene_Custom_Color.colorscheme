@@ -14,7 +14,7 @@ Color=0,0,0
 Color=152,152,152
 
 [Color0Intense]
-Color=0,0,0
+Color=16,208,255
 
 [Color1]
 Color=232,130,135
@@ -92,5 +92,5 @@ Color=16,208,255
 Blur=false
 ColorRandomization=false
 Description=Colene Custom Scheme
-Opacity=0.96
+Opacity=0.9
 Wallpaper=
