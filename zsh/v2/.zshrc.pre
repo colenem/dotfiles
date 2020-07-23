@@ -11,6 +11,7 @@ setopt append_history extended_history hist_expire_dups_first hist_ignore_dups h
 # [ source files ]
 source $HOME/.zplug/init.zsh
 source $HOME/custom.zsh
+source $HOME/zypper.zsh
 
 # [ add to $PATH ]
 #additional_paths=(/usr/local/lib/node_modules $HOME/.composer/vendor/bin $HOME/bin)
