@@ -1,5 +1,9 @@
+#[variables]
+FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
 # [aliases]
 #alias colorize='pygmentize -g'
+alias exa='exa --group-directories-first'
 alias g='git'
 alias gconfig='vim ~/.gitconfig'
 alias gignore='vim ~/.gitignore_global'
@@ -68,6 +72,14 @@ function colorizen () {
 function empty () { 
     echo '' > $1
 }
+
+# alias expansion
+function expand-alias() {
+	zle _expand_alias
+	zle self-insert
+}
+zle -N expand-alias
+bindkey -M main '  ' expand-alias
 
 function gdt() {
     g difftool --tool=$1
