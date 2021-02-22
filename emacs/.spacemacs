@@ -40,7 +40,7 @@ This function should only modify configuration layer settings."
      html
      javascript
      markdown
-     multiple-cursors
+     (multiple-cursors :variables multiple-cursors-backend 'evil-mc)
      ( org :variables org-want-todo-bindings t )
      python
      php
@@ -48,6 +48,7 @@ This function should only modify configuration layer settings."
      treemacs
      user-plugins
      user-themes
+     (xclipboard :variables xclipboard-enable-cliphist t)
      )
 
    ;; List of additional packages that will be installed without being
@@ -186,7 +187,7 @@ It should only modify the values of Spacemacs settings."
                          seoul256
                          aanila
                          Amelie
-                         distingusihed
+                         distinguished
                          spacemacs-dark
                          spacemacs-light)
 
@@ -357,7 +358,8 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers '(:enabled-for-modes 't)
+   ;;dotspacemacs-line-numbers '(:enabled-for-modes 't)
+   dotspacemacs-line-numbers t
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -481,6 +483,21 @@ before packages are loaded."
   (set-face-foreground 'whitespace-line  'unspecified) ;; change background for whitespace
   (set-face-foreground 'whitespace-space "#5C6370")    ;; change background for whitespace
   (set-face-foreground 'whitespace-tab   "#5C6370")    ;; change background for whitespace
+  (add-hook 'org-mode-hook (lambda () (hl-todo-mode -1))) ;;this is messing up task colors
+  (setq org-todo-keywords
+        '((sequence "TODO" "IN PROGRESS" "NEXT" "NICETOHAVE" "NEEDSFIX" "**BLOCKED**" "TRYFIX" "IGNORE" "WONTFIX" "|" "**DONE**")))
+  (setq org-todo-keyword-faces
+        '(("TODO" :foreground "#00A0C5" :weight bold)
+          ("IN PROGRESS" :foreground "#B0EE34" :weight bold)
+          ("NEXT" :foreground "#FFC238" :weight bold)
+          ("NICETOHAVE" :foreground "#FE68C3" :weight bold)
+          ("NEEDSFIX" :foreground "#FFEA87" :weight bold)
+          ("TRYFIX" :foreground "#FF4900" :weight bold)
+          ("IGNORE" :foreground "#FF3838" :weight bold)
+          ("WONTFIX" :foreground "#FF3838" :weight bold)
+          ("**BLOCKED**" :background "#B50202" :foreground "#ffffff" :weight bold)
+          ("**DONE**" :background "#00D939" :foreground "#ffffff" :weight bold)
+          ))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
