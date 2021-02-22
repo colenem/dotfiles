@@ -1,32 +1,14 @@
 [user]
 	name = Colene McFarlane
-	email = cmcfarlane@storycorps.org
+	email = cmcfarlane22@gmail.com
 [core]
-	excludesfile = /Users/colenemcfarlane/.gitignore
 	editor = nvim
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-	trustExitCode = true
 [push]
 	default = matching
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
-[commit]
-	template = /Users/colenemcfarlane/.stCommitMsg
-[difftool "p4merge"]
-	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
-	trustExitCode = false
-[mergetool "p4merge"]
-	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
-	trustExitCode = false
-[mergetool "sublime"]
-	cmd = sublime -w $MERGED
-	trustExitCode = false
 [diff]
 	tool = vimdiff3
 	algorithm = histogram
@@ -45,13 +27,9 @@
 	cob     = "!git co -b"
 	coo     = "!git co --ours"
 	d       = diff
-	dsf     = "!f() { \
-				[ -z "$GIT_PREFIX" ] || cd "$GIT_PREFIX" '\
-				'&& git diff --color "$@" | diff-so-fancy  | less --tabs=4 -RFX; \
-			  }; f" #use diff-so-fancy for displaying diffs
-    #dt      = "!f() { \
-	#			git difftool --tool=$1; \
-	#		  }; f"
+    dsf     = "!f() { \
+                git diff --color "$@" | diff-so-fancy  | less --tabs=4 -RFX; \
+              }; f"
 	l       = log --graph --abbrev-commit --decorate --date=relative
 	lf      = log --graph --abbrev-commit --decorate --date=relative --first-parent
 	fp      = "!git fetch -p && git pull"
@@ -83,9 +61,5 @@
 	path = nvim
 [mergetool]
 	path = nvim
-[difftool "onidiff"]
-    cmd = oni -d $LOCAL $REMOTE
-[difftool "vimrdiff"]
-    cmd = vimr --wait --nvim -d $LOCAL $REMOTE
 [log]
 	date = local
