@@ -3,7 +3,9 @@ FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # [aliases]
 #alias colorize='pygmentize -g'
-alias exa='exa --group-directories-first'
+alias customrc='vim ~/custom.zsh'
+alias exa='exa -a --group-directories-first'
+alias exal='exa -l'
 alias g='git'
 alias gconfig='vim ~/.gitconfig'
 alias gignore='vim ~/.gitignore_global'
@@ -14,6 +16,7 @@ alias lc='ls -G'
 alias lh='lc -a'
 alias ll='lc -la'
 alias lsD='gls --group-directories-first --color=always -lah'
+alias mkdwn="pandoc -t html $1 | lynx -stdin"
 alias nvrc='export nvim; nvim ~/.config/nvim/init.vim'
 alias vim='neo'
 alias omz='vim ~/custom.zsh'
@@ -75,11 +78,11 @@ function empty () {
 
 # alias expansion
 function expand-alias() {
-	zle _expand_alias
-	zle self-insert
+    zle _expand_alias
+    zle self-insert
 }
 zle -N expand-alias
-bindkey -M main '  ' expand-alias
+bindkey -M main '^I^I' expand-alias
 
 function gdt() {
     g difftool --tool=$1

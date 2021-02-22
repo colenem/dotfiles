@@ -15,12 +15,14 @@ alias gcob='git checkout -b'
 alias gcoo='git checkout --ours'
 alias gd='git diff'
 alias gdn='git diff --name-only'
+alias gdsf='g dsf'
+alias gdsfc='gdsf --cached'
 alias gdt='git difftool --tool='
 alias gdT='git diff-tree --no-commit-id --name-only -r'
-alias gl='git log --graph --abbrev-commit --decorate --date=local'
+alias gfp='git fetch -p && git pull'
 alias gk='gitk --all --first-parent --remotes --reflog --author-date-order'
+alias gl='git log --graph --abbrev-commit --decorate --date=local'
 alias glf='git log --graph --abbrev-commit --decorate --date=local --first-parent'
-alias gfp='git fetch -p ;and git pull'
 alias gm='git merge --no-commit --no-ff'
 alias gma='git merge --abort'
 alias gms='git merge --no-commit --squash'
@@ -36,10 +38,11 @@ alias gs='git status'
 alias gsa='g sa'
 alias gsho='git show'
 alias gsl='git stash list'
-alias gss="git stash save (date '+%b %d, %Y at %I:%M %p')"
+alias gss="git stash save $(date '+%b %d, %Y at %I:%M %p')"
 alias gtrack='git update-index --no-assume-unchanged'
 alias guntrack='git update-index --assume-unchanged'
-alias spacemacs='emacs -mm &'
-alias gdsfc='gdsf --cached'
 alias findExec='find $1 -type $2 -name $3 -exec grep -HniF --color=always $4 "{}" \;' 
 
+function gpnb () {
+    git push --set-upstream git@gitlab.com:cmcfarlane/$(git rev-parse --show-toplevel | xargs basename).git $(git rev-parse --abbrev-ref HEAD)
+}

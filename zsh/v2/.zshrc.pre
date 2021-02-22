@@ -21,7 +21,9 @@ source $HOME/zypper.zsh
 #        export PATH=$i:$PATH
 #    fi
 #done
-
+typeset -U path
+path+=("$HOME/Develop/diff-so-fancy" "$HOME/.local/bin")
+export PATH
 
 # [ set node environment variable ]
 #if [[ ${NODE_PATH:-word} = word ]]; then
