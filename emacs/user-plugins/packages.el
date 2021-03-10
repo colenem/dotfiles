@@ -30,7 +30,8 @@
 ;;; Code:
 
 (defconst user-plugins-packages
-  '(telephone-line)
+  '(telephone-line
+    (php-extras :location (recipe :fetcher github :repo "arnested/php-extras") :toggle (not (eq php-backend 'lsp))))
   "The list of Lisp packages required by the user-plugins layer.
 
 Each entry is either:

@@ -65,7 +65,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(slim-mode pug-mode drupal-mode haml-mode counsel-css dap-mode counsel-gtags livid-mode)
+   dotspacemacs-excluded-packages '(slim-mode pug-mode drupal-mode haml-mode counsel-css dap-mode counsel-gtags livid-mode phpcbf php-auto-yasnippets)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -462,6 +462,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq-default split-height-threshold nil)
   (setq-default split-width-threshold 0)        ;; open in vertical split with C-c o
   (setq even-window-sizes 1)
+  (setq-default quelpa-build-tar-executable "/usr/bin/tar")
  )
 
 (defun dotspacemacs/user-load ()
