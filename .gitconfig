@@ -63,3 +63,5 @@
 	path = nvim
 [log]
 	date = local
+[pull]
+	rebase = false
