@@ -456,7 +456,7 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq ispell-program-name "aspell")           ;; use aspell as default dictionary
   (setq vc-follow-symlinks t)                   ;; always follow symlinks, hide prompt
-  (setq seoul256-background 233)                ;; use dark background
+  ;;(setq seoul256-background 233)                ;; use dark background
   (setq-default indent-tabs-mode nil)           ;; always use spaces instead of tabs
   (setq-default tab-width 4)                    ;; tab width of 4 (spaces)
   (setq-default split-height-threshold nil)
@@ -480,12 +480,13 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (load-theme 'solarized-wombat-dark t)
   (global-whitespace-mode t)
-  (set-face-background 'whitespace-line  'unspecified) ;; change background for whitespace
-  (set-face-background 'whitespace-space 'unspecified) ;; change background for whitespace
-  (set-face-background 'whitespace-tab   'unspecified) ;; change background for whitespace
-  (set-face-foreground 'whitespace-line  'unspecified) ;; change background for whitespace
+  (set-face-background 'whitespace-line  'nil) ;; change background for whitespace
+  (set-face-background 'whitespace-space 'nil) ;; change background for whitespace
+  (set-face-background 'whitespace-tab   'nil) ;; change background for whitespace
+  (set-face-foreground 'whitespace-line  'nil) ;; change background for whitespace
   (set-face-foreground 'whitespace-space "#5C6370")    ;; change background for whitespace
   (set-face-foreground 'whitespace-tab   "#5C6370")    ;; change background for whitespace
+  (set-face-background 'font-lock-comment-face 'nil)
   (add-hook 'org-mode-hook (lambda () (hl-todo-mode -1))) ;;this is messing up task colors
   (setq org-todo-keywords
         '((sequence "TODO" "IN PROGRESS" "NEXT" "NICETOHAVE" "NEEDSFIX" "**BLOCKED**" "TRYFIX" "IGNORE" "WONTFIX" "|" "**DONE**")))
@@ -515,22 +516,47 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(Linum-format "%7i ")
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
+ '(ansi-term-color-vector
+   [unspecified "#14191f" "#d15120" "#81af34" "#deae3e" "#7e9fc9" "#a878b5" "#7e9fc9" "#dcdddd"])
+ '(background-color "#202020")
+ '(background-mode dark)
+ '(cursor-color "#cccccc")
  '(custom-safe-themes
-   '("2296db63b1de14e65390d0ded8e2b5df4b9e4186f3251af56807026542a58201" default))
+   '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" "e4522239121f8ba60ca63e567c0652aa79a7feb6d5f49788dd70486352539357" "c86020963382a17b6c9ea75f5a585491f79adbc6049e817c26cf8e7f156cf625" "845489fb9f7547e6348a80f942402fc7ac7c6854b0accabc49aeddd8cd4a2bd9" "13a8eaddb003fd0d561096e11e1a91b029d3c9d64554f8e897b2513dbf14b277" "2296db63b1de14e65390d0ded8e2b5df4b9e4186f3251af56807026542a58201" default))
  '(evil-want-Y-yank-to-eol nil)
+ '(fci-rule-character-color "#202020")
+ '(foreground-color "#cccccc")
+ '(fringe-mode 4 nil (fringe))
  '(helm-completion-style 'emacs)
+ '(highlight-parentheses-colors '("#7ec98f" "#e5c06d" "#a4b5e6" "#834c98" "#8ac6f2"))
+ '(hl-sexp-background-color "#1c1f26")
+ '(linum-format " %7i ")
+ '(magit-diff-use-overlays nil)
+ '(main-line-color1 "#1E1E1E")
+ '(main-line-color2 "#111111")
+ '(main-line-separator-style 'chamfer)
+ '(org-src-block-faces
+   '(("emacs-lisp"
+      (:background "#F0FFF0"))
+     ("dot"
+      (:foreground "gray50"))))
  '(package-selected-packages
-   '(zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme modus-vivendi-theme modus-operandi-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme kaolin-themes jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme eziam-theme exotica-theme espresso-theme dracula-theme doom-themes django-theme darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme chocolate-theme autothemer cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spaceline powerline smeargle skewer-mode simple-httpd scss-mode sass-mode haml-mode restart-emacs rainbow-delimiters popwin phpunit phpcbf php-extras php-auto-yasnippets php-mode persp-mode pcre2el paradox spinner orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup macrostep lorem-ipsum linum-relative link-hint json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc indent-guide hydra lv hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit transient git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump f diminish define-word company-web web-completion-data company-tern s dash-functional tern dash company-statistics company column-enforce-mode coffee-mode clean-aindent-mode bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup seoul256-theme))
+   '(ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spaceline powerline smeargle skewer-mode simple-httpd scss-mode sass-mode haml-mode restart-emacs rainbow-delimiters popwin phpunit phpcbf php-extras php-auto-yasnippets php-mode persp-mode pcre2el paradox spinner orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup macrostep lorem-ipsum linum-relative link-hint json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc indent-guide hydra lv hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit transient git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump f diminish define-word company-web web-completion-data company-tern s dash-functional tern dash company-statistics company column-enforce-mode coffee-mode clean-aindent-mode bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup seoul256-theme))
+ '(powerline-color1 "#1E1E1E")
+ '(powerline-color2 "#111111")
  '(telephone-line-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro" :foundry "ADBO" :slant normal :weight normal :height 143 :width normal))))
- '(font-lock-comment-face ((t (:foreground "#719872" :slant italic)))))
+ '(default ((((class color) (min-colors 89)) (:foreground "#d4d4d4" :background "#000000"))))
+ '(font-lock-comment-face ((((class color) (min-colors 89)) (:foreground "#74736f")))))
 )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
