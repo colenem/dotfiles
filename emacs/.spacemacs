@@ -207,8 +207,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
 
    ;; Default font or prioritized list of fonts.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 14.0
+   dotspacemacs-default-font '("Fira Mono for Powerline Regular"
+                               :size 16.0
                                :weight normal
                                :width normal)
 
@@ -463,6 +463,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq-default split-width-threshold 0)        ;; open in vertical split with C-c o
   (setq even-window-sizes 1)
   (setq-default quelpa-build-tar-executable "/usr/bin/tar")
+  (setq org-indent-indentation-per-level 2)
+  (setq seoul256-background 233)
  )
 
 (defun dotspacemacs/user-load ()
@@ -502,6 +504,7 @@ before packages are loaded."
           ("**BLOCKED**" :background "#B50202" :foreground "#ffffff" :weight bold)
           ("**DONE**" :background "#00D939" :foreground "#ffffff" :weight bold)
           ))
+  (setq seoul256-background 233)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -525,21 +528,52 @@ This function is called at the very end of Spacemacs initialization."
    [unspecified "#14191f" "#d15120" "#81af34" "#deae3e" "#7e9fc9" "#a878b5" "#7e9fc9" "#dcdddd"])
  '(background-color "#202020")
  '(background-mode dark)
+ '(beacon-color "#d54e53")
+ '(compilation-message-face 'default)
+ '(cua-global-mark-cursor-color "#7ec98f")
+ '(cua-normal-cursor-color "#7c7c7c")
+ '(cua-overwrite-cursor-color "#e5c06d")
+ '(cua-read-only-cursor-color "#8ac6f2")
  '(cursor-color "#cccccc")
+ '(cursor-type 'bar)
+ '(custom-enabled-themes '(seoul256))
  '(custom-safe-themes
-   '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" "e4522239121f8ba60ca63e567c0652aa79a7feb6d5f49788dd70486352539357" "c86020963382a17b6c9ea75f5a585491f79adbc6049e817c26cf8e7f156cf625" "845489fb9f7547e6348a80f942402fc7ac7c6854b0accabc49aeddd8cd4a2bd9" "13a8eaddb003fd0d561096e11e1a91b029d3c9d64554f8e897b2513dbf14b277" "2296db63b1de14e65390d0ded8e2b5df4b9e4186f3251af56807026542a58201" default))
+   '("845489fb9f7547e6348a80f942402fc7ac7c6854b0accabc49aeddd8cd4a2bd9" "2296db63b1de14e65390d0ded8e2b5df4b9e4186f3251af56807026542a58201" default))
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-character-color "#202020")
+ '(fci-rule-color "#0b0b0b")
+ '(flycheck-color-mode-line-face-to-color 'mode-line-buffer-id)
  '(foreground-color "#cccccc")
+ '(frame-background-mode 'dark)
  '(fringe-mode 4 nil (fringe))
  '(helm-completion-style 'emacs)
+ '(highlight-changes-colors '("#e5786d" "#834c98"))
  '(highlight-parentheses-colors '("#7ec98f" "#e5c06d" "#a4b5e6" "#834c98" "#8ac6f2"))
+ '(highlight-symbol-colors
+   '("#37422f301f2f" "#22ea312d259d" "#3c102d062b4c" "#23a7185f2777" "#25be3069390f" "#35b22ae41f58" "#2a192d0c36bb"))
+ '(highlight-symbol-foreground-color "#8b8b8b")
+ '(highlight-tail-colors
+   '(("#0b0b0b" . 0)
+     ("#183130" . 20)
+     ("#183130" . 30)
+     ("#183130" . 50)
+     ("#323013" . 60)
+     ("#323013" . 70)
+     ("#341307" . 85)
+     ("#0b0b0b" . 100)))
+ '(hl-bg-colors
+   '("#323013" "#323013" "#323013" "#341307" "#321531" "#183130" "#183130" "#183130"))
+ '(hl-fg-colors
+   '("#000000" "#000000" "#000000" "#000000" "#000000" "#000000" "#000000" "#000000"))
  '(hl-sexp-background-color "#1c1f26")
  '(linum-format " %7i ")
+ '(lsp-ui-doc-border "#8b8b8b")
  '(magit-diff-use-overlays nil)
  '(main-line-color1 "#1E1E1E")
  '(main-line-color2 "#111111")
  '(main-line-separator-style 'chamfer)
+ '(nrepl-message-colors
+   '("#ffb4ac" "#ddaa6f" "#e5c06d" "#183130" "#e2ffff" "#183130" "#7ec98f" "#e5786d" "#834c98"))
  '(org-src-block-faces
    '(("emacs-lisp"
       (:background "#F0FFF0"))
@@ -547,16 +581,65 @@ This function is called at the very end of Spacemacs initialization."
       (:foreground "gray50"))))
  '(package-selected-packages
    '(ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spaceline powerline smeargle skewer-mode simple-httpd scss-mode sass-mode haml-mode restart-emacs rainbow-delimiters popwin phpunit phpcbf php-extras php-auto-yasnippets php-mode persp-mode pcre2el paradox spinner orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup macrostep lorem-ipsum linum-relative link-hint json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc indent-guide hydra lv hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit transient git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump f diminish define-word company-web web-completion-data company-tern s dash-functional tern dash company-statistics company column-enforce-mode coffee-mode clean-aindent-mode bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup seoul256-theme))
+ '(pos-tip-background-color "#0b0b0b")
+ '(pos-tip-foreground-color "#8b8b8b")
  '(powerline-color1 "#1E1E1E")
  '(powerline-color2 "#111111")
- '(telephone-line-mode t))
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#8ac6f2" "#0b0b0b" 0.2))
+ '(telephone-line-mode t)
+ '(term-default-bg-color "#000000")
+ '(term-default-fg-color "#7c7c7c")
+ '(tetris-x-colors
+   [[229 192 123]
+    [97 175 239]
+    [209 154 102]
+    [224 108 117]
+    [152 195 121]
+    [198 120 221]
+    [86 182 194]])
+ '(vc-annotate-background nil)
+ '(vc-annotate-background-mode nil)
+ '(vc-annotate-color-map
+   '((20 . "#ffb4ac")
+     (40 . "#f3a0bb068dbb")
+     (60 . "#ecf0bdf57dd8")
+     (80 . "#e5c06d")
+     (100 . "#d1fcc2679b35")
+     (120 . "#c551c35ab143")
+     (140 . "#b610c464c727")
+     (160 . "#a327c588dd05")
+     (180 . "#8ac6f2")
+     (200 . "#89fec7dad1d0")
+     (220 . "#8863c85ec150")
+     (240 . "#85eec8dcb0cf")
+     (260 . "#82a3c956a041")
+     (280 . "#7ec98f")
+     (300 . "#9131c244b2d6")
+     (320 . "#98acbe43c439")
+     (340 . "#9f20ba15d58f")
+     (360 . "#a4b5e6")))
+ '(vc-annotate-very-old-color nil)
+ '(weechat-color-list
+   '(unspecified "#000000" "#0b0b0b" "#323013" "#ffb4ac" "#183130" "#8ac6f2" "#323013" "#e5c06d" "#183130" "#a4b5e6" "#341307" "#e5786d" "#183130" "#7ec98f" "#7c7c7c" "#5e5e5e"))
+ '(window-divider-mode nil)
+ '(xterm-color-names
+   ["#0b0b0b" "#ffb4ac" "#8ac6f2" "#e5c06d" "#a4b5e6" "#e5786d" "#7ec98f" "#eeeeee"])
+ '(xterm-color-names-bright
+   ["#000000" "#ddaa6f" "#525252" "#5e5e5e" "#7c7c7c" "#834c98" "#8b8b8b" "#ffffff"]))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((((class color) (min-colors 89)) (:foreground "#d4d4d4" :background "#000000"))))
- '(font-lock-comment-face ((((class color) (min-colors 89)) (:foreground "#74736f")))))
+ '(font-lock-comment-face ((((class color) (min-colors 89)) (:foreground "#5e5e5e"))))
+ '(org-default ((t (:inherit default :family "Fira Mono for Powerline Regular"))))
+ '(org-level-1 ((t (:extend nil :foreground "#EB6F6E" :weight normal :height 1.5 :family "Fira Mono for Powerline Regular"))))
+ '(org-level-2 ((t (:extend nil :foreground "#D290E4" :weight normal :height 1.35 :family "Fira Mono for Powerline Regular"))))
+ '(org-level-3 ((t (:extend nil :foreground "#72BEF2" :weight normal :height 1.25 :family "Fira Mono for Powerline Regular"))))
+ '(org-level-4 ((t (:extend nil :foreground "#FFEA87" :weight normal :height 1.17 :family "Fira Mono for Powerline Regular"))))
+ '(org-level-5 ((t (:extend nil :foreground "#7ec98f" :weight normal :height 1.17 :family "Fira Mono for Powerline Regular"))))
+ '(whitespace-line ((t nil))))
 )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -571,9 +654,9 @@ This function is called at the very end of Spacemacs initialization."
  '(package-selected-packages
    (quote
     (ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spaceline powerline smeargle skewer-mode simple-httpd scss-mode sass-mode haml-mode restart-emacs rainbow-delimiters popwin phpunit phpcbf php-extras php-auto-yasnippets php-mode persp-mode pcre2el paradox spinner orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup macrostep lorem-ipsum linum-relative link-hint json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc indent-guide hydra lv hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit transient git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump f diminish define-word company-web web-completion-data company-tern s dash-functional tern dash company-statistics company column-enforce-mode coffee-mode clean-aindent-mode bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup seoul256-theme))))
-(custom-set-faces
+;(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro" :foundry "ADBO" :slant normal :weight normal :height 143 :width normal)))))
+ ;'(default ((t (:family "Source Code Pro" :foundry "ADBO" :slant normal :weight normal :height 143 :width normal)))))
