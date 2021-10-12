@@ -538,7 +538,8 @@ This function is called at the very end of Spacemacs initialization."
  '(cursor-type 'bar)
  '(custom-enabled-themes '(seoul256))
  '(custom-safe-themes
-   '("845489fb9f7547e6348a80f942402fc7ac7c6854b0accabc49aeddd8cd4a2bd9" "2296db63b1de14e65390d0ded8e2b5df4b9e4186f3251af56807026542a58201" default))
+   '("845489fb9f7547e6348a80f942402fc7ac7c6854b0accabc49aeddd8cd4a2bd9" "13a8eaddb003fd0d561096e11e1a91b029d3c9d64554f8e897b2513dbf14b277" "2296db63b1de14e65390d0ded8e2b5df4b9e4186f3251af56807026542a58201" default))
+ '(delete-selection-mode nil)
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-character-color "#202020")
  '(fci-rule-color "#0b0b0b")
