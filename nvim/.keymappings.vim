@@ -21,7 +21,7 @@ nnoremap <Leader>h :tab help
 nnoremap <Leader>' ciw'<C-r>"'
 
 " save and source
-nnoremap <Leader>so :w <bar> so ~/.vimrc<CR>
+nnoremap <Leader>so :w <bar> so ~/.config/nvim/init.vim<CR>
 
 " display syntax attribute (for overriding default vim styles)
 nnoremap <C-x> :redir @*<BAR>exec ':echo synIDattr(synID(line("."), col("."),1), "name")'<BAR>redir END <CR>

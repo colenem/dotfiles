@@ -39,19 +39,9 @@
 
 "    lightline setup
 " =====================
-"let g:lightline = {
-"    \ 'colorscheme': 'one',
-"    \ }
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }"so ~/.vim/after/settings/lightline.vim
+" setup is configured in ~/.config/nvim/after/plugin/vim-lightline.vim
+" needs vim fugitive to load first to use one of its functions, won't
+" execute properly in this current settings file
 
 "    Match html tags
 " =====================

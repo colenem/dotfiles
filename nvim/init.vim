@@ -91,6 +91,8 @@ let g:netrw_winsize = 14      " use 25% of the page width to show the file tree
 
 "    GUI Specific Settings
 " ===========================
+hi Normal guibg=black
+
 if exists("g:gui_oni")
     " Taken from oni's init config found here: ~/oni/vim/default/bundle/oni-vim-defaults/plugin/init.vim
     "colo Tomorrow-Night-Bright

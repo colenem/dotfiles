@@ -80,10 +80,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-syntastic/syntastic', { 'as': 'vim-syntastic' }
 
 " Nginx syntax highlighting
-Plug 'chr4/nginx.vim', { 'as': 'vim-syntax-php' }
+Plug 'chr4/nginx.vim', { 'as': 'vim-syntax-nginx' }
 
 " PHP Syntax Highlighting
 Plug 'StanAngeloff/php.vim', { 'as': 'vim-syntax-php' }
+
+" PHP Blade
+Plug 'jwalton512/vim-blade', { 'as': 'vim-syntax-php-blade' }
 
 "JS Syntax Highlighting
 Plug 'jelera/vim-javascript-syntax', { 'as': 'vim-syntax-javascript' } 
