@@ -90,8 +90,8 @@ Each entry is either:
 
 (defun user-themes/init-seoul256-theme()
   (use-package seoul256-theme
-    :demand
-    :init
+    :defer t
+    :config
     (setq seoul256-background 233)))
 
 ;;; packages.el ends here

@@ -207,8 +207,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
 
    ;; Default font or prioritized list of fonts.
-   dotspacemacs-default-font '("Fira Mono for Powerline Regular"
-                               :size 16.0
+   dotspacemacs-default-font '("Fira Mono for Powerline"
+                               :size 12.0
                                :weight normal
                                :width normal)
 
@@ -493,17 +493,30 @@ before packages are loaded."
   (setq org-todo-keywords
         '((sequence "TODO" "IN PROGRESS" "NEXT" "NICETOHAVE" "NEEDSFIX" "**BLOCKED**" "TRYFIX" "IGNORE" "WONTFIX" "|" "**DONE**")))
   (setq org-todo-keyword-faces
-        '(("TODO" :foreground "#00A0C5" :weight bold)
-          ("IN PROGRESS" :foreground "#B0EE34" :weight bold)
-          ("NEXT" :foreground "#FFC238" :weight bold)
-          ("NICETOHAVE" :foreground "#FE68C3" :weight bold)
-          ("NEEDSFIX" :foreground "#FFEA87" :weight bold)
-          ("TRYFIX" :foreground "#FF4900" :weight bold)
-          ("IGNORE" :foreground "#FF3838" :weight bold)
-          ("WONTFIX" :foreground "#FF3838" :weight bold)
-          ("**BLOCKED**" :background "#B50202" :foreground "#ffffff" :weight bold)
-          ("**DONE**" :background "#00D939" :foreground "#ffffff" :weight bold)
+        '(("TODO" :foreground "#00A0C5" :weight bold :height 1.15)
+          ("IN PROGRESS" :foreground "#B0EE34" :weight bold :height 1.15)
+          ("NEXT" :foreground "#FFC238" :weight bold :height 1.15)
+          ("NICETOHAVE" :foreground "#FE68C3" :weight bold :height 1.15)
+          ("NEEDSFIX" :foreground "#FFEA87" :weight bold :height 1.15)
+          ("TRYFIX" :foreground "#FF4900" :weight bold :height 1.15)
+          ("IGNORE" :foreground "#FF3838" :weight bold :height 1.15)
+          ("WONTFIX" :foreground "#FF3838" :weight bold :height 1.15)
+          ("**BLOCKED**" :background "#B50202" :foreground "#ffffff" :weight bold :height 1.15)
+          ("**DONE**" :background "#00D939" :foreground "#ffffff" :weight bold :height 1.15)
           ))
+  (custom-set-faces
+   '(org-headline-done ((t (:extend nil :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+   '(org-special-keyword ((t (:extend nil :foreground "#F3F0E7" :height 1.15))))
+   '(org-date ((t (:extend nil :height 1.15))))
+   '(org-level-1 ((t (:extend nil :foreground "#EB6F6E" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+   '(org-level-2 ((t (:extend nil :foreground "#D290E4" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+   '(org-level-3 ((t (:extend nil :foreground "#72BEF2" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+   '(org-level-4 ((t (:extend nil :foreground "#FFEA87" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+   '(org-level-5 ((t (:extend nil :foreground "#7EC98F" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+   '(org-level-6 ((t (:extend nil :foreground "#7EC98F" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+   '(org-level-7 ((t (:extend nil :foreground "#7EC98F" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+   '(org-level-8 ((t (:extend nil :foreground "#7EC98F" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+   )
   (setq seoul256-background 233)
 )
 
@@ -536,7 +549,6 @@ This function is called at the very end of Spacemacs initialization."
  '(cua-read-only-cursor-color "#8ac6f2")
  '(cursor-color "#cccccc")
  '(cursor-type 'bar)
- '(custom-enabled-themes '(seoul256))
  '(custom-safe-themes
    '("845489fb9f7547e6348a80f942402fc7ac7c6854b0accabc49aeddd8cd4a2bd9" "13a8eaddb003fd0d561096e11e1a91b029d3c9d64554f8e897b2513dbf14b277" "2296db63b1de14e65390d0ded8e2b5df4b9e4186f3251af56807026542a58201" default))
  '(delete-selection-mode nil)
@@ -635,11 +647,6 @@ This function is called at the very end of Spacemacs initialization."
  '(default ((((class color) (min-colors 89)) (:foreground "#d4d4d4" :background "#000000"))))
  '(font-lock-comment-face ((((class color) (min-colors 89)) (:foreground "#5e5e5e"))))
  '(org-default ((t (:inherit default :family "Fira Mono for Powerline Regular"))))
- '(org-level-1 ((t (:extend nil :foreground "#EB6F6E" :weight normal :height 1.5 :family "Fira Mono for Powerline Regular"))))
- '(org-level-2 ((t (:extend nil :foreground "#D290E4" :weight normal :height 1.35 :family "Fira Mono for Powerline Regular"))))
- '(org-level-3 ((t (:extend nil :foreground "#72BEF2" :weight normal :height 1.25 :family "Fira Mono for Powerline Regular"))))
- '(org-level-4 ((t (:extend nil :foreground "#FFEA87" :weight normal :height 1.17 :family "Fira Mono for Powerline Regular"))))
- '(org-level-5 ((t (:extend nil :foreground "#7ec98f" :weight normal :height 1.17 :family "Fira Mono for Powerline Regular"))))
  '(whitespace-line ((t nil))))
 )
 (custom-set-variables
