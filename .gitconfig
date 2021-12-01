@@ -1,8 +1,11 @@
+[init]
+	defaultBranch = main
 [user]
 	name = Colene McFarlane
 	email = cmcfarlane22@gmail.com
 [core]
 	editor = nvim
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [push]
 	default = matching
 [filter "lfs"]
@@ -27,9 +30,6 @@
 	cob     = "!git co -b"
 	coo     = "!git co --ours"
 	d       = diff
-    dsf     = "!f() { \
-                git diff --color "$@" | diff-so-fancy  | less --tabs=4 -RFX; \
-              }; f"
 	l       = log --graph --abbrev-commit --decorate --date=relative
 	lf      = log --graph --abbrev-commit --decorate --date=relative --first-parent
 	fp      = "!git fetch -p && git pull"
@@ -65,3 +65,5 @@
 	date = local
 [pull]
 	rebase = false
+[interactive]
+	diffFilter = diff-so-fancy --patch
