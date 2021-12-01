@@ -1,11 +1,12 @@
 #[variables]
 #FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export QT_QPA_PLATFORMTHEME=qt5ct
 export FZF_DEFAULT_COMMAND='fd -HI --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # [aliases]
-#alias colorize='pygmentize -g'
+alias colorize='pygmentize -g'
 alias customrc='vim ~/custom.zsh'
 alias exa='exa -a --group-directories-first'
 alias exal='exa -l'
@@ -19,7 +20,6 @@ alias lc='ls -G'
 alias lh='lc -a'
 alias ll='lc -la'
 alias lsD='gls --group-directories-first --color=always -lah'
-alias mkdwn="pandoc -t html $1 | lynx -stdin"
 alias nvrc='export nvim; nvim ~/.config/nvim/init.vim'
 alias vim='neo'
 alias omz='vim ~/custom.zsh'
@@ -76,6 +76,11 @@ function colorizen () {
     colorize $1 | nl
 }
 
+function ddev_wp () {
+    local wp_install_path=/var/www/html/site/web/wp
+    ddev wp --path=$wp_install_path $argv
+}
+
 function empty () { 
     echo '' > $1
 }
@@ -112,6 +117,10 @@ function merge () {
     else
         git merge $argv --no-commit --no-ff
     fi
+}
+
+function mkdwn() {
+    pandoc -t html $1 | lynx -stdin
 }
 
 function neo() {
