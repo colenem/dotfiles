@@ -40,7 +40,7 @@ This function should only modify configuration layer settings."
      html
      javascript
      markdown
-     (multiple-cursors :variables multiple-cursors-backend 'evil-mc)
+     ( multiple-cursors :variables multiple-cursors-backend 'evil-mc )
      ( org :variables org-want-todo-bindings t )
      python
      php
@@ -49,8 +49,8 @@ This function should only modify configuration layer settings."
      treemacs
      user-plugins
      user-themes
-     (xclipboard :variables xclipboard-enable-cliphist t)
-     )
+     ( xclipboard :variables xclipboard-enable-cliphist t )
+   )
 
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -65,7 +65,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(slim-mode pug-mode drupal-mode haml-mode counsel-css dap-mode counsel-gtags livid-mode phpcbf php-auto-yasnippets)
+   dotspacemacs-excluded-packages '(slim-mode pug-mode drupal-mode haml-mode dap-mode counsel-gtags livid-mode phpcbf php-extras zonokai-emacs)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -465,7 +465,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq-default quelpa-build-tar-executable "/usr/bin/tar")
   (setq org-indent-indentation-per-level 2)
   (setq seoul256-background 233)
- )
+)
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
@@ -480,16 +480,41 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  ;; set theme
   (load-theme 'solarized-wombat-dark t)
+  ;(setq seoul256-background 233)
+
+  ;; whitespace settings
   (global-whitespace-mode t)
-  (set-face-background 'whitespace-line  'nil) ;; change background for whitespace
-  (set-face-background 'whitespace-space 'nil) ;; change background for whitespace
-  (set-face-background 'whitespace-tab   'nil) ;; change background for whitespace
-  (set-face-foreground 'whitespace-line  'nil) ;; change background for whitespace
-  (set-face-foreground 'whitespace-space "#5C6370")    ;; change background for whitespace
-  (set-face-foreground 'whitespace-tab   "#5C6370")    ;; change background for whitespace
+  (set-face-attribute 'whitespace-tab nil
+                      :background 'unspecified
+                      :foreground "#5E5E5E")
+  (set-face-attribute 'whitespace-space nil
+                      :background 'unspecified
+                      :foreground "#5E5E5E")
+
   (set-face-background 'font-lock-comment-face 'nil)
   (add-hook 'org-mode-hook (lambda () (hl-todo-mode -1))) ;;this is messing up task colors
+
+  ;; blade highlighting
+  (add-to-list 'auto-mode-alist '("\\.blade.php\\'" . web-mode))
+
+  (defun maybe-use-blade-settings ()
+    (when (and (stringp buffer-file-name)
+               (string-match "\\.blade.php" buffer-file-name))
+      (set-face-foreground'web-mode-block-delimiter-face "#d666ed")
+      (set-face-foreground'web-mode-block-control-face "#d666ed")
+      ))
+
+  (add-hook 'web-mode-hook 'maybe-use-blade-settings)
+
+  ;; PHP mode completion
+  (add-hook 'php-mode-hook
+            (lambda ()
+              (set (make-local-variable 'company-backends)
+                   '((php-extras-company company-dabbrev) company-capf company-files))))
+
+  ;; Org mode keyword config
   (setq org-todo-keywords
         '((sequence "TODO" "IN PROGRESS" "NEXT" "NICETOHAVE" "NEEDSFIX" "**BLOCKED**" "TRYFIX" "IGNORE" "WONTFIX" "|" "**DONE**")))
   (setq org-todo-keyword-faces
@@ -504,20 +529,6 @@ before packages are loaded."
           ("**BLOCKED**" :background "#B50202" :foreground "#ffffff" :weight bold :height 1.15)
           ("**DONE**" :background "#00D939" :foreground "#ffffff" :weight bold :height 1.15)
           ))
-  (custom-set-faces
-   '(org-headline-done ((t (:extend nil :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
-   '(org-special-keyword ((t (:extend nil :foreground "#F3F0E7" :height 1.15))))
-   '(org-date ((t (:extend nil :height 1.15))))
-   '(org-level-1 ((t (:extend nil :foreground "#EB6F6E" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
-   '(org-level-2 ((t (:extend nil :foreground "#D290E4" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
-   '(org-level-3 ((t (:extend nil :foreground "#72BEF2" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
-   '(org-level-4 ((t (:extend nil :foreground "#FFEA87" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
-   '(org-level-5 ((t (:extend nil :foreground "#7EC98F" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
-   '(org-level-6 ((t (:extend nil :foreground "#7EC98F" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
-   '(org-level-7 ((t (:extend nil :foreground "#7EC98F" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
-   '(org-level-8 ((t (:extend nil :foreground "#7EC98F" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
-   )
-  (setq seoul256-background 233)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -550,7 +561,7 @@ This function is called at the very end of Spacemacs initialization."
  '(cursor-color "#cccccc")
  '(cursor-type 'bar)
  '(custom-safe-themes
-   '("845489fb9f7547e6348a80f942402fc7ac7c6854b0accabc49aeddd8cd4a2bd9" "13a8eaddb003fd0d561096e11e1a91b029d3c9d64554f8e897b2513dbf14b277" "2296db63b1de14e65390d0ded8e2b5df4b9e4186f3251af56807026542a58201" default))
+   '("db7f422324a763cfdea47abf0f931461d1493f2ecf8b42be87bbbbbabf287bfe" "2296db63b1de14e65390d0ded8e2b5df4b9e4186f3251af56807026542a58201" default))
  '(delete-selection-mode nil)
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-character-color "#202020")
@@ -559,6 +570,7 @@ This function is called at the very end of Spacemacs initialization."
  '(foreground-color "#cccccc")
  '(frame-background-mode 'dark)
  '(fringe-mode 4 nil (fringe))
+ '(global-whitespace-mode nil)
  '(helm-completion-style 'emacs)
  '(highlight-changes-colors '("#e5786d" "#834c98"))
  '(highlight-parentheses-colors '("#7ec98f" "#e5c06d" "#a4b5e6" "#834c98" "#8ac6f2"))
@@ -578,7 +590,24 @@ This function is called at the very end of Spacemacs initialization."
    '("#323013" "#323013" "#323013" "#341307" "#321531" "#183130" "#183130" "#183130"))
  '(hl-fg-colors
    '("#000000" "#000000" "#000000" "#000000" "#000000" "#000000" "#000000" "#000000"))
+ '(hl-paren-colors '("#7ec98f" "#e5c06d" "#a4b5e6" "#834c98" "#8ac6f2"))
  '(hl-sexp-background-color "#1c1f26")
+ '(hl-todo-keyword-faces
+   '(("TODO" . "#dc752f")
+     ("NEXT" . "#dc752f")
+     ("THEM" . "#2d9574")
+     ("PROG" . "#4f97d7")
+     ("OKAY" . "#4f97d7")
+     ("DONT" . "#f2241f")
+     ("FAIL" . "#f2241f")
+     ("DONE" . "#86dc2f")
+     ("NOTE" . "#b1951d")
+     ("KLUDGE" . "#b1951d")
+     ("HACK" . "#b1951d")
+     ("TEMP" . "#b1951d")
+     ("FIXME" . "#dc752f")
+     ("XXX+" . "#dc752f")
+     ("\\?\\?\\?+" . "#dc752f")))
  '(linum-format " %7i ")
  '(lsp-ui-doc-border "#8b8b8b")
  '(magit-diff-use-overlays nil)
@@ -587,6 +616,8 @@ This function is called at the very end of Spacemacs initialization."
  '(main-line-separator-style 'chamfer)
  '(nrepl-message-colors
    '("#ffb4ac" "#ddaa6f" "#e5c06d" "#183130" "#e2ffff" "#183130" "#7ec98f" "#e5786d" "#834c98"))
+ '(org-fontify-done-headline nil)
+ '(org-fontify-todo-headline nil)
  '(org-src-block-faces
    '(("emacs-lisp"
       (:background "#F0FFF0"))
@@ -646,8 +677,35 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(default ((((class color) (min-colors 89)) (:foreground "#d4d4d4" :background "#000000"))))
  '(font-lock-comment-face ((((class color) (min-colors 89)) (:foreground "#5e5e5e"))))
+ '(font-lock-doc-face ((t (:foreground "#7f848e" :slant normal))))
+ '(org-date ((t (:extend nil :height 1.15))))
  '(org-default ((t (:inherit default :family "Fira Mono for Powerline Regular"))))
- '(whitespace-line ((t nil))))
+ '(org-headline-done ((t (:extend nil :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+ '(org-level-1 ((t (:extend nil :foreground "#EB6F6E" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+ '(org-level-2 ((t (:extend nil :foreground "#D290E4" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+ '(org-level-3 ((t (:extend nil :foreground "#72BEF2" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+ '(org-level-4 ((t (:extend nil :foreground "#FFEA87" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+ '(org-level-5 ((t (:extend nil :foreground "#7EC98F" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+ '(org-level-6 ((t (:extend nil :foreground "#7EC98F" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+ '(org-level-7 ((t (:extend nil :foreground "#7EC98F" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+ '(org-level-8 ((t (:extend nil :foreground "#7EC98F" :weight normal :height 1.15 :family "Fira Mono for Powerline Regular"))))
+ '(org-special-keyword ((t (:extend nil :foreground "#F3F0E7" :height 1.15))))
+ '(php-constant ((t (:foreground "#d19a66"))))
+ '(php-doc-annotation-tag ((t (:inherit font-lock-constant-face :foreground "#d666ed"))))
+ '(php-doc-variable-sigil ((t (:inherit php-variable-name))))
+ '(php-function-call ((t (:foreground "#61afef"))))
+ '(php-import-declaration ((t (:inherit php-keyword :foreground "#d666ed"))))
+ '(php-keyword ((t (:inherit font-lock-keyword-face :foreground "#d666ed"))))
+ '(php-operator ((t (:foreground "#2bbac5"))))
+ '(php-php-tag ((t (:inherit php-variable-name))))
+ '(php-variable-name ((t (:inherit font-lock-variable-name-face :foreground "#e05561"))))
+ '(php-variable-sigil ((t (:inherit php-variable-name))))
+ '(web-mode-doctype-face ((t (:foreground "#d19a66" :slant italic :weight bold))))
+ '(web-mode-function-call-face ((t (:inherit font-lock-function-name-face :foreground "#2bbac5"))))
+ '(web-mode-html-attr-name-face ((t (:foreground "#d19a66" :slant normal))))
+ '(web-mode-html-tag-bracket-face ((t (:foreground "#abb2bf"))))
+ '(web-mode-html-tag-face ((t (:foreground "#e05561"))))
+ '(whitespace-line ((t (:background nil :foreground nil)))))
 )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
