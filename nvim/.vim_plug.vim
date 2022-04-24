@@ -69,7 +69,7 @@ Plug '2072/PHP-Indenting-for-VIm', { 'as': 'vim-php-indenting' }
 Plug 'scrooloose/nerdtree', { 'as': 'vim-nerdtree' } | Plug 'Xuyuanp/nerdtree-git-plugin', { 'as': 'vim-nerdtree-git-plugin' }
 "Plug 'francoiscabrol/ranger.vim', { 'as': 'vim-ranger' } | Plug 'rbgrouleff/bclose.vim', { 'as': 'vim-bclose' }
 "Plug 'tpope/vim-vinegar'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim', { 'as': 'vim-fzf' }
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim', { 'as': 'vim-fzf' }
 
 " Vim Fugitive (Git Status Chars)
 Plug 'tpope/vim-fugitive' 
