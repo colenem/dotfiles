@@ -30,8 +30,7 @@
 ;;; Code:
 
 (defconst user-plugins-packages
-  '(telephone-line
-    (php-extras :location (recipe :fetcher github :repo "arnested/php-extras") :toggle (not (eq php-backend 'lsp))))
+  '(telephone-line)
   "The list of Lisp packages required by the user-plugins layer.
 
 Each entry is either:
@@ -57,7 +56,8 @@ Each entry is either:
         `./local/PACKAGE/PACKAGE.el'
 
       - A list beginning with the symbol `recipe' is a melpa
-        recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
+        recipe.  See: https://github.com/milkypostman/melpa#recipe-format"
+)
 
 (defun user-plugins/init-telephone-line()
   (use-package telephone-line
