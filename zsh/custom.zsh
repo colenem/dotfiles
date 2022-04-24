@@ -77,7 +77,11 @@ function colorizen () {
 }
 
 function ddev_wp () {
-    local wp_install_path=/var/www/html/site/web/wp
+    if [ -d /var/www/html/site/web/wp ]; then
+        local wp_install_path=/var/www/html/site/web/wp
+    else
+        local wp_install_path=/var/www/html
+    fi
     ddev wp --path=$wp_install_path $argv
 }
 
